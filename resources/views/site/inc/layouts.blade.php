@@ -516,7 +516,7 @@
 <script src="{{asset('site/assets/js/echo.min.js')}}"></script>
 <script src="{{asset('site/assets/js/jquery.easing-1.3.min.js')}}"></script>
 <script src="{{asset('site/assets/js/bootstrap-slider.min.js')}}"></script>
-<script src={{asset('site/"assets/js/jquery.rateit.min.js')}}"></script>
+<script src="{{asset('site/"assets/js/jquery.rateit.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('site/assets/js/lightbox.min.js')}}"></script>
 <script src="{{asset('site/assets/js/bootstrap-select.min.js')}}"></script>
 <script src="{{asset('site/assets/js/wow.min.js')}}"></script>
