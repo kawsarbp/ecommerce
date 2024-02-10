@@ -1,4 +1,3 @@
-
 $(function () {
 
     "use strict";
@@ -6,13 +5,13 @@ $(function () {
     //TOASTR NOTIFICATION
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     toastr.options = {
-    "progressBar": true,
-    "positionClass": "toast-bottom-right",
-    "timeOut": 3500,
-    "showEasing": "swing",
-    "hideEasing": "linear",
-    "showMethod": "slideDown",
-    "hideMethod": "fadeOut"
+        "progressBar": true,
+        "positionClass": "toast-bottom-right",
+        "timeOut": 3500,
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "slideDown",
+        "hideMethod": "fadeOut"
     };
 
     toastr.info('Enjoy it!', '<h5 style="margin-top: 0px; margin-bottom: 5px;"><b>This is Faz Group Template!</b></h5>');
@@ -21,11 +20,11 @@ $(function () {
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     var area = document.getElementById("area-chart");
 
-    var options ={
+    var options = {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero: true
                 }
             }]
         }
@@ -121,6 +120,27 @@ $(function () {
         zoom: {
             enabled: true,
             duration: 300
+        }
+    });
+
+});
+
+// change status custom code
+$('body').on('change', "#brand-status", function () {
+    var id = $(this).data("id");
+    if (this.checked) {
+        var myStatus = 'active';
+    } else {
+        var myStatus = 'inactive';
+    }
+
+    $('.cm-loader').show();
+    $.ajax({
+       url:"update-status/"+id+'/'+myStatus,
+        method:'get',
+        success:function (result){
+            $('.cm-loader').hide();
+            console.log(result)
         }
     });
 

@@ -18,10 +18,14 @@
     <link rel="stylesheet" href="{{asset('admin/vendor/toastr/toastr.min.css')}}">
     <!--Magnific popup-->
     <link rel="stylesheet" href="{{asset('admin/vendor/magnific-popup/magnific-popup.css')}}">
+
+    <link rel="stylesheet" href="{{asset('admin/vendor/data-table/media/css/dataTables.bootstrap.min.css')}}">
+
     <!--TEMPLATE css-->
     <!-- ========================================================= -->
     <link rel="stylesheet" href="{{asset('admin/stylesheets/css/style.css')}}">
-
+    {{--toggle status--}}
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 </head>
 
@@ -109,11 +113,11 @@
                             <!--UI ELEMENTENTS-->
 
                             <!--CHARTS-->
-                            <li class="has-child-item close-item {{ request()->routeIs('admin.addBrand') ? 'open-item active-item':'' }} {{ request()->routeIs('admin.manageBrand') ? 'open-item active-item':'' }}">
+                            <li class="has-child-item close-item {{ request()->routeIs('brand.addBrand') ? 'open-item active-item':'' }} {{ request()->routeIs('brand.manageBrand') ? 'open-item active-item':'' }}">
                                 <a><i class="fa fa-list" aria-hidden="true"></i><span>Brand</span> </a>
                                 <ul class="nav child-nav level-1">
-                                    <li class="{{ request()->routeIs('admin.addBrand') ? 'open-item':'' }}"><a href="{{ route('admin.addBrand') }}">Add Brand</a></li>
-                                    <li class="{{ request()->routeIs('admin.manageBrand') ? 'open-item':'' }}"><a href="{{ route('admin.manageBrand') }}">Manage Brand</a></li>
+                                    <li class="{{ request()->routeIs('brand.addBrand') ? 'open-item':'' }}"><a href="{{ route('brand.addBrand') }}">Add Brand</a></li>
+                                    <li class="{{ request()->routeIs('brand.manageBrand') ? 'open-item':'' }}"><a href="{{ route('brand.manageBrand') }}">Manage Brand</a></li>
                                 </ul>
                             </li>
 
@@ -130,6 +134,11 @@
 
         <a href="#" class="scroll-to-top"><i class="fa fa-angle-double-up"></i></a>
     </div>
+</div>
+
+<!--  CM spinner  -->
+<div class="cm-loader">
+    <div class="cm-spinner"></div>
 </div>
 <!--BASIC scripts-->
 <!-- ========================================================= -->
@@ -148,6 +157,15 @@
 <script src="{{asset('admin/vendor/chart-js/chart.min.js')}}"></script>
 <!--Gallery with Magnific popup-->
 <script src="{{asset('admin/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+
+
+<script src="{{asset('admin/vendor/data-table/media/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin/vendor/data-table/media/js/dataTables.bootstrap.min.js')}}"></script>
+<!--Examples-->
+<script src="{{asset('admin/javascripts/examples/tables/data-tables.js')}}"></script>
+{{--toggle status--}}
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 <!--Examples-->
 <script src="{{asset('admin/javascripts/examples/dashboard.js')}}"></script>
 </body>
