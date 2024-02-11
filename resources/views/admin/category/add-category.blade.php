@@ -11,7 +11,7 @@
     <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
     <div class="row animated fadeInUp">
         <div class="col-sm-offset-2 col-sm-8">
-            <h4 class="section-subtitle"><b>Brand</b> Update Form</h4>
+            <h4 class="section-subtitle"><b>Category</b> Create Form</h4>
 
             @include('message.message')
             <div class="panel">
@@ -19,21 +19,19 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <form class="form-horizontal" method="POST" action="{{ route('brand.update',$brand->id) }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('category.store') }}">
                                 @csrf
-                                @method('PUT')
-                                <h5 class="mb-lg">Update your brand</h5>
+                                <h5 class="mb-lg">Create your Category</h5>
                                 <div class="form-group">
-                                    <label for="brand_name" class="col-sm-2 control-label">Brand Name</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{$brand->brand_name}}" name="brand_name" class="form-control" id="brand_name" placeholder="Brand Name">
-
-                                        @error('brand_name') <div class="text-danger">{{ $message }}</div> @enderror
+                                    <label for="brand_name" class="col-sm-3 control-label">Category Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text"  name="name" class="form-control" id="name" value="{{ old('name') }}" placeholder="Category Name">
+                                        @error('name') <div class="text-danger">{{ $message }}</div> @enderror
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="col-sm-offset-3 col-sm-9">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>

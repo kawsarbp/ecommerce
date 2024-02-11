@@ -2,32 +2,25 @@
 
 namespace Database\Seeders;
 
-use App\Models\Brand;
-use App\Models\User;
+use App\Models\Category;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
-class BrandsTableSeeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'kawsar ahmed',
-            'email' => 'kawsargaming100@gmail.com',
-            'password' => Hash::make(12123123)
-        ]);
-
         $faker = Factory::create();
         foreach (range(1, 10) as $index) {
-            Brand::create([
+            $name = $faker->unique()->name;
+            Category::create([
                 'user_id' => 1,
-                'brand_name' => $faker->unique()->name,
-                'brand_slug' => str_replace(' ', '-', $faker->unique()->name),
+                'name' => $name,
+                'slug' => str_replace(' ', '-', $name),
                 'status' => array_rand(['active' => 'active', 'inactive' => 'inactive']),
             ]);
         }

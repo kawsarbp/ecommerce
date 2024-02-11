@@ -9,16 +9,18 @@ use Exception;
 
 class BrandController extends Controller
 {
+    /*show create brand form*/
     public function addBrand()
     {
         return view('admin.brand.add-brand');
     }
+    /*show manage brand and passing data*/
     public function manageBrand()
     {
         $brands = Brand::select('id','brand_name','brand_slug','status')->orderby('id','desc')->get();
         return view('admin.brand.manage-brand',compact('brands'));
     }
-
+    /*sotre brand*/
     public function store(Request $request)
     {
         try {
@@ -26,6 +28,7 @@ class BrandController extends Controller
                 'brand_name'=>'required|unique:brands,brand_name'
             ]);
             Brand::create([
+                'user_id' => auth()->id(),
                 'brand_name' => $request->brand_name,
                 'brand_slug' => str_replace(' ','-',$request->brand_name),
                 'status' => 'active',
@@ -37,7 +40,7 @@ class BrandController extends Controller
             return redirect()->back();
         }
     }
-
+    /*delete brand*/
     public function delete($id)
     {
         $id = base64_decode($id);
@@ -46,7 +49,7 @@ class BrandController extends Controller
         message('success','brand has been successfully deleted!');
         return redirect()->back();
     }
-
+    /*update brand status with ajax */
     public function updateStatus($id, $status)
     {
         $brand = Brand::find($id);
@@ -58,6 +61,7 @@ class BrandController extends Controller
         }
     }
 
+    /*edit brand form show*/
     public function edit($id)
     {
         $id = base64_decode($id);
@@ -65,7 +69,7 @@ class BrandController extends Controller
 
         return view('admin.brand.edit-brand',compact('brand'));
     }
-
+    /*update brand*/
     public function update(Request $request,$id)
     {
         $brand = Brand::find($id);
@@ -73,7 +77,7 @@ class BrandController extends Controller
             $request->validate([
                 'brand_name'=>'required|unique:brands,id,'.$id
             ]);
-
+                $brand->user_id = auth()->id();
                 $brand->brand_name = $request->brand_name;
                 $brand->brand_slug = str_replace(' ','-',$request->brand_name);
                 $brand->status = 'active';
@@ -86,4 +90,5 @@ class BrandController extends Controller
             return redirect()->back();
         }
     }
+
 }

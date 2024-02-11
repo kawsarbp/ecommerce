@@ -112,12 +112,29 @@
                             </li>
                             <!--UI ELEMENTENTS-->
 
-                            <!--CHARTS-->
+                            <!--Brand-->
                             <li class="has-child-item close-item {{ request()->routeIs('brand.addBrand') ? 'open-item active-item':'' }} {{ request()->routeIs('brand.manageBrand') ? 'open-item active-item':'' }}">
                                 <a><i class="fa fa-list" aria-hidden="true"></i><span>Brand</span> </a>
                                 <ul class="nav child-nav level-1">
                                     <li class="{{ request()->routeIs('brand.addBrand') ? 'open-item':'' }}"><a href="{{ route('brand.addBrand') }}">Add Brand</a></li>
                                     <li class="{{ request()->routeIs('brand.manageBrand') ? 'open-item':'' }}"><a href="{{ route('brand.manageBrand') }}">Manage Brand</a></li>
+                                </ul>
+                            </li>
+                            <!--CATEGORY-->
+                            <li class="has-child-item close-item {{ request()->routeIs('category.addCategory') ? 'open-item active-item':'' }} {{ request()->routeIs('category.manageCategory') ? 'open-item active-item':'' }}">
+                                <a><i class="fa fa-list" aria-hidden="true"></i><span>Category</span> </a>
+                                <ul class="nav child-nav level-1">
+                                    <li class="{{ request()->routeIs('category.addCategory') ? 'open-item':'' }}"><a href="{{ route('category.addCategory') }}">Add Category</a></li>
+                                    <li class="{{ request()->routeIs('category.manageCategory') ? 'open-item':'' }}"><a href="{{ route('category.manageCategory') }}">Manage Category</a></li>
+                                </ul>
+                            </li>
+
+                            <!--SLIDER-->
+                            <li class="has-child-item close-item {{ request()->routeIs('slider.addSlider') ? 'open-item active-item':'' }} {{ request()->routeIs('slider.manageSlider') ? 'open-item active-item':'' }}">
+                                <a><i class="fa fa-list" aria-hidden="true"></i><span>Slider</span> </a>
+                                <ul class="nav child-nav level-1">
+                                    <li class="{{ request()->routeIs('slider.addSlider') ? 'open-item':'' }}"><a href="{{ route('slider.addSlider') }}">Add Slider</a></li>
+                                    <li class="{{ request()->routeIs('slider.manageSlider') ? 'open-item':'' }}"><a href="{{ route('slider.manageSlider') }}">Manage Slider</a></li>
                                 </ul>
                             </li>
 

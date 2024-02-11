@@ -126,7 +126,7 @@ $(function () {
 });
 
 // change status custom code
-$('body').on('change', "#brand-status", function () {
+$('.brand-on-change').on('change', "#brand-status", function () {
     var id = $(this).data("id");
     if (this.checked) {
         var myStatus = 'active';
@@ -143,5 +143,23 @@ $('body').on('change', "#brand-status", function () {
             console.log(result)
         }
     });
+});
 
+$('.category-on-change').on('change', "#category-status", function () {
+    var id = $(this).data("id");
+    if (this.checked) {
+        var myStatus = 'active';
+    } else {
+        var myStatus = 'inactive';
+    }
+
+    $('.cm-loader').show();
+    $.ajax({
+        url:"update-status/"+id+'/'+myStatus,
+        method:'get',
+        success:function (result){
+            $('.cm-loader').hide();
+            console.log(result)
+        }
+    });
 });
