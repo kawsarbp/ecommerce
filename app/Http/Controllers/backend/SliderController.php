@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Image;
 
 class SliderController extends Controller
 {
@@ -79,7 +80,9 @@ class SliderController extends Controller
             'end_date' => $request->end_date,
             'status' => 'active',
         ]);
-        $file->move(public_path('uploads/slider/'),$file_name);
+        /*image upload with image intervention*/
+        // $file->move(public_path('uploads/slider/'),$file_name);
+        Image::make($file)->resize(500,250)->save(public_path('uploads/slider/').$file_name);
         message('success', 'Slider has been successfully created!');
         return redirect()->route('slider.manageSlider');
     }
