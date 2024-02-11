@@ -3,17 +3,86 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SliderController extends Controller
 {
-
+    /*add slider page*/
     public function addSlider()
     {
         return view('admin.slider.add-slider');
     }
+
+    /*manage slider*/
     public function manageSlider()
     {
-        return view('admin.slider.manage-slider');
+        $sliders = Slider::where('start_date','<=',date('Y-m-d'))
+            ->where('end_date','>=',date('Y-m-d'))
+            ->select('id', 'user_id', 'title', 'sub_title', 'photo', 'url', 'start_date', 'end_date', 'status')
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('admin.slider.manage-slider', compact('sliders'));
     }
+
+    /*delete slider*/
+    public function delete($id)
+    {
+        $id = base64_decode($id);
+        $slider = Slider::find($id);
+        $slider->delete();
+        $image_path = public_path("uploads/slider/{$slider->photo}");
+        if (File::exists($image_path)) {
+            //File::delete($image_path);
+            unlink($image_path);
+        }
+        message('success', 'Slider has been successfully deleted!');
+        return redirect()->back();
+    }
+
+    /*update status with ajax*/
+    public function updateStatus($id, $status)
+    {
+        $slider = Slider::find($id);
+        $slider->status = $status;
+        if ($slider->save()) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
+
+    /*add new slider*/
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|min:10',
+            'sub_title' => 'required|min:15',
+            'url' => 'required|url',
+            'start_date' => 'date',
+            'end_date' => 'date',
+            'photo' => 'required|image'
+        ]);
+
+        $file = $request->file('photo');
+        $file_ex = $file->getClientOriginalExtension();
+        $file_name = uniqid() . date('dmyhis.') . $file_ex;
+        Slider::create([
+            'user_id' => auth()->id(),
+            'title' => $request->title,
+            'sub_title' => $request->sub_title,
+            'photo' => $file_name,
+            'url' => $request->url,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'status' => 'active',
+        ]);
+        $file->move(public_path('uploads/slider/'),$file_name);
+        message('success', 'Slider has been successfully created!');
+        return redirect()->route('slider.manageSlider');
+    }
+
+
 }
