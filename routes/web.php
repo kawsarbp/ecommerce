@@ -3,6 +3,7 @@
 use App\Http\Controllers\backend\BrandController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\SliderController;
+use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\frontend\SiteController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/update/{id}', [CategoryController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('delete');
         Route::get('/update-status/{id}/{status}', [CategoryController::class, 'updateStatus'])->name('updateStatus');
+    });
+    /*subcategories route*/
+    Route::prefix('/sub-category')->name('subcategory.')->group(function () {
+        Route::get('/create', [SubcategoryController::class, 'addSubcategory'])->name('addSubcategory');
+        Route::get('/manage', [SubcategoryController::class, 'manageSubcategory'])->name('manageSubcategory');
+        Route::post('/store', [SubcategoryController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [SubcategoryController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [SubcategoryController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [SubcategoryController::class, 'delete'])->name('delete');
+        Route::get('/update-status/{id}/{status}', [SubcategoryController::class, 'updateStatus'])->name('updateStatus');
     });
     /*slider route*/
     Route::prefix('/slider')->name('slider.')->group(function () {

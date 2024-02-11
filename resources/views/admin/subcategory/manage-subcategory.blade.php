@@ -15,29 +15,31 @@
             <div class="panel">
                 <div class="panel-content">
                     @include('message.message')
-                    <div class="table-responsive category-on-change">
+                    <div class="table-responsive subcategory-on-change">
                         <table id="basic-table" class="data-table table table-striped nowrap table-hover"
                                cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th>Serial No</th>
                                 <th>Category Name</th>
+                                <th>Sub Category Name</th>
                                 <th>Status</th>
                                 <th>action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($categories as $category)
+                            @foreach($subcategories as $subcategory)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $subcategory->category->name }}</td>
+                                    <td>{{ $subcategory->name }}</td>
                                     <td>
-                                        <input type="checkbox" id="category-status" data-id="{{$category->id}}" {{ $category->status === 'active' ?'checked':'' }} data-toggle="toggle" data-on="Active" data-off="Inactive" data-size="mini">
+                                        <input type="checkbox" id="subcategory-status" data-id="{{$subcategory->id}}" {{ $subcategory->status === 'active' ?'checked':'' }} data-toggle="toggle" data-on="Active" data-off="Inactive" data-size="mini">
                                     </td>
                                     <td>
-                                        <a href="{{route('category.edit',base64_encode($category->id))}}"
+                                        <a href="{{route('subcategory.edit',base64_encode($subcategory->id))}}"
                                            class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                                        <a href="{{route('category.delete',base64_encode($category->id))}}"
+                                        <a href="{{route('subcategory.delete',base64_encode($subcategory->id))}}"
                                            class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                     </td>
                                 </tr>

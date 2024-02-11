@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             BrandsTableSeeder::class,
             CategoriesTableSeeder::class,
-            SlidersTableSeeder::class
+            SlidersTableSeeder::class,
+            SubcategoriesTableSeeder::class
         ]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

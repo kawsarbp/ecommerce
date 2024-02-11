@@ -144,8 +144,28 @@ $('.brand-on-change').on('change', "#brand-status", function () {
         }
     });
 });
-
+// category change status
 $('.category-on-change').on('change', "#category-status", function () {
+    var id = $(this).data("id");
+    if (this.checked) {
+        var myStatus = 'active';
+    } else {
+        var myStatus = 'inactive';
+    }
+
+    $('.cm-loader').show();
+    $.ajax({
+        url:"update-status/"+id+'/'+myStatus,
+        method:'get',
+        success:function (result){
+            $('.cm-loader').hide();
+            console.log(result)
+        }
+    });
+});
+
+// sub category change status
+$('.subcategory-on-change').on('change', "#subcategory-status", function () {
     var id = $(this).data("id");
     if (this.checked) {
         var myStatus = 'active';

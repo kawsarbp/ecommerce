@@ -121,14 +121,17 @@
                                 </ul>
                             </li>
                             <!--CATEGORY-->
-                            <li class="has-child-item close-item {{ request()->routeIs('category.addCategory') ? 'open-item active-item':'' }} {{ request()->routeIs('category.manageCategory') ? 'open-item active-item':'' }}">
+                            <li class="has-child-item close-item {{ request()->routeIs('category.addCategory','category.manageCategory','subcategory.addSubcategory','subcategory.manageSubcategory') ? 'open-item active-item':'' }} ">
                                 <a><i class="fa fa-list" aria-hidden="true"></i><span>Category</span> </a>
                                 <ul class="nav child-nav level-1">
                                     <li class="{{ request()->routeIs('category.addCategory') ? 'open-item':'' }}"><a href="{{ route('category.addCategory') }}">Add Category</a></li>
                                     <li class="{{ request()->routeIs('category.manageCategory') ? 'open-item':'' }}"><a href="{{ route('category.manageCategory') }}">Manage Category</a></li>
+
+                                    <li class="{{ request()->routeIs('subcategory.addSubcategory') ? 'open-item':'' }}"><a href="{{ route('subcategory.addSubcategory') }}">Add Sub Category</a></li>
+                                    <li class="{{ request()->routeIs('subcategory.manageSubcategory') ? 'open-item':'' }}"><a href="{{ route('subcategory.manageSubcategory') }}">Manage Sub Category</a></li>
+
                                 </ul>
                             </li>
-
                             <!--SLIDER-->
                             <li class="has-child-item close-item {{ request()->routeIs('slider.addSlider') ? 'open-item active-item':'' }} {{ request()->routeIs('slider.manageSlider') ? 'open-item active-item':'' }}">
                                 <a><i class="fa fa-list" aria-hidden="true"></i><span>Slider</span> </a>
