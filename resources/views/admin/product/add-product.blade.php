@@ -39,7 +39,10 @@
                                     <div class="col-md-6">
                                         <label for="subcategory" class="control-label">Sub Category</label>
                                         <select name="subcategory" id="subcategory" class="form-control mySelectPicker">
-                                            <option value="">Select Category</option>
+                                            <option value="">Select</option>
+                                            @foreach($subcategories as $subcategory)
+                                                <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                            @endforeach
                                         </select>
                                         @error('subcategory')
                                         <div class="text-danger">{{ $message }}</div> @enderror
@@ -48,7 +51,9 @@
                                         <label for="brand" class="control-label">Brand</label>
                                         <select name="brand" id="brand" class="form-control mySelectPicker">
                                             <option value="">Select</option>
-                                            <option value="">Select Category</option>
+                                            @foreach($brands as $brand)
+                                                <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
+                                            @endforeach
                                         </select>
                                         @error('brand')
                                         <div class="text-danger">{{ $message }}</div> @enderror
@@ -78,31 +83,23 @@
                                         <label for="model" class="control-label">Product model</label>
                                         <input type="text" name="model" value="{{ old('model') }}" id="model"
                                                placeholder="Enter product model" class="form-control">
-                                        @error('model')
-                                        <div class="text-danger">{{ $message }}</div> @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="special_price" class="control-label">Special Price</label>
                                         <input type="number" name="special_price" value="{{ old('special_price') }}"
                                                id="special_price" placeholder="0.00" class="form-control">
-                                        @error('special_price')
-                                        <div class="text-danger">{{ $message }}</div> @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="special_start" class="control-label">Special Start</label>
                                         <input type="text" name="special_start" value="{{ old('special_start') }}"
                                                id="special_start" placeholder="DD-MM-YYYY"
                                                class="form-control datepicker">
-                                        @error('special_start')
-                                        <div class="text-danger">{{ $message }}</div> @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="special_end" class="control-label">Special End</label>
                                         <input type="text" name="special_end" value="{{ old('special_end') }}"
                                                id="special_end" placeholder="DD-MM-YYYY"
                                                class="form-control datepicker">
-                                        @error('special_end')
-                                        <div class="text-danger">{{ $message }}</div> @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="quantity" class="control-label">Product Quantity</label>
@@ -115,8 +112,6 @@
                                         <label for="video_url" class="control-label">Video URL</label>
                                         <input type="url" name="video_url" value="{{ old('video_url') }}" id="video_url"
                                                placeholder="Video URL" class="form-control">
-                                        @error('video_url')
-                                        <div class="text-danger">{{ $message }}</div> @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="thumbnail" class="control-label">Thumbnail</label>
@@ -150,7 +145,6 @@
                                         <label for="warranty_duration" class="control-label">Warranty Duration</label>
                                         <input type="text" name="warranty_duration" value="{{ old('warranty_duration') }}" id="warranty_duration"
                                                placeholder="Warranty Duration" class="form-control">
-                                        @error('warranty_duration') <div class="text-danger">{{ $message }}</div> @enderror
                                     </div>
                                     <div class="col-md-12">
                                         <label for="warranty_conditions" class="control-label">Warranty Conditions</label>
@@ -159,6 +153,7 @@
                                     <div class="col-md-12">
                                         <label for="description" class="control-label">Description</label>
                                         <textarea  name="description" id="description" cols="10" rows="3" class="form-control summernote">{{ old('description') }}</textarea>
+                                        @error('description') <div class="text-danger">{{ $message }}</div> @enderror
                                     </div>
                                     <div class="col-md-12">
                                         <label for="long_description" class="control-label">Long Description</label>
@@ -182,8 +177,6 @@
                                     </div>
 
                                 </div>
-
-
 
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">

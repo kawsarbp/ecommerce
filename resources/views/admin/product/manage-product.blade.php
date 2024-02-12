@@ -28,6 +28,7 @@
                                 <th>Special Price Date</th>
                                 <th>Quantity</th>
                                 <th>Thumbnail</th>
+                                <th>Gallery</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -43,7 +44,18 @@
                                     <td>{{ $product->special_price }}</td>
                                     <td>{{ date('d, M-Y',strtotime($product->special_start)) .' - '.  date('d, M-Y',strtotime($product->special_end))   }}</td>
                                     <td>{{ $product->quantity }}</td>
-                                    <td><img style="width: 120px;" src="{{ $product->thumbnail }}" alt=""></td>
+                                    <td><img style="width: 50px;" src="{{asset('uploads/thumbnail').'/'.$product->thumbnail}}" alt=""></td>
+                                    <td>
+
+                                            <?php
+                                            $images = json_decode($product->gallery);
+                                        if (is_array($images) || is_object($images)) {
+                                        foreach ($images as $file) {
+                                            ?>
+                                        <img src="{{ asset('uploads/gallery/'.$file) }}" style="width: 50px;" alt="">
+                                        <?php }
+                                        } ?>
+                                    </td>
 
                                     <td>
                                         <input type="checkbox" id="product-status" data-id="{{$product->id}}"
@@ -51,9 +63,9 @@
                                                data-on="Active" data-off="Inactive" data-size="mini">
                                     </td>
                                     <td>
-                                        <a href="# {{route('slider.edit',base64_encode($product->id))}}"
+                                        <a href="# {{route('product.edit',base64_encode($product->id))}}"
                                            class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                                        <a href="{{route('slider.delete',base64_encode($product->id))}}"
+                                        <a href="{{route('product.delete',base64_encode($product->id))}}"
                                            class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                     </td>
                                 </tr>

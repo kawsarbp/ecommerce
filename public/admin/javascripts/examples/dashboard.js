@@ -8,19 +8,6 @@ $(function () {
     });
 
 
-    //TOASTR NOTIFICATION
-    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    toastr.options = {
-        "progressBar": true,
-        "positionClass": "toast-bottom-right",
-        "timeOut": 3500,
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "slideDown",
-        "hideMethod": "fadeOut"
-    };
-
-    toastr.info('Enjoy it!', '<h5 style="margin-top: 0px; margin-bottom: 5px;"><b>This is Faz Group Template!</b></h5>');
 
     //AREA CHART EXAMPLE
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
