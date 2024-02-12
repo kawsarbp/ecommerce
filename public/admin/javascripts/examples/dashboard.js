@@ -1,6 +1,12 @@
 $(function () {
 
     "use strict";
+    /*editor*/
+    $('.summernote').summernote({
+        height: 110,
+        placeholder: 'Enter Content'
+    });
+
 
     //TOASTR NOTIFICATION
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -125,6 +131,20 @@ $(function () {
 
 });
 
+
+//Select2 basic example
+$(".mySelectPicker").select2({
+    placeholder: "Select",
+    allowClear: true
+});
+
+//Default datepicker example
+$('.datepicker').datepicker({
+    todayHighlight: true,
+    format: "yyyy-mm-dd"
+});
+
+
 // change status custom code
 $('.brand-on-change').on('change', "#brand-status", function () {
     var id = $(this).data("id");
@@ -136,9 +156,9 @@ $('.brand-on-change').on('change', "#brand-status", function () {
 
     $('.cm-loader').show();
     $.ajax({
-       url:"update-status/"+id+'/'+myStatus,
-        method:'get',
-        success:function (result){
+        url: "update-status/" + id + '/' + myStatus,
+        method: 'get',
+        success: function (result) {
             $('.cm-loader').hide();
             console.log(result)
         }
@@ -155,9 +175,9 @@ $('.category-on-change').on('change', "#category-status", function () {
 
     $('.cm-loader').show();
     $.ajax({
-        url:"update-status/"+id+'/'+myStatus,
-        method:'get',
-        success:function (result){
+        url: "update-status/" + id + '/' + myStatus,
+        method: 'get',
+        success: function (result) {
             $('.cm-loader').hide();
             console.log(result)
         }
@@ -175,9 +195,9 @@ $('.subcategory-on-change').on('change', "#subcategory-status", function () {
 
     $('.cm-loader').show();
     $.ajax({
-        url:"update-status/"+id+'/'+myStatus,
-        method:'get',
-        success:function (result){
+        url: "update-status/" + id + '/' + myStatus,
+        method: 'get',
+        success: function (result) {
             $('.cm-loader').hide();
             console.log(result)
         }
@@ -197,9 +217,9 @@ $('.product-on-change').on('change', "#product-status", function () {
 
     $('.cm-loader').show();
     $.ajax({
-        url:"update-status/"+id+'/'+myStatus,
-        method:'get',
-        success:function (result){
+        url: "update-status/" + id + '/' + myStatus,
+        method: 'get',
+        success: function (result) {
             $('.cm-loader').hide();
             console.log(result)
         }

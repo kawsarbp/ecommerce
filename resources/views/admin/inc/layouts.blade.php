@@ -19,6 +19,17 @@
     <!--Magnific popup-->
     <link rel="stylesheet" href="{{asset('admin/vendor/magnific-popup/magnific-popup.css')}}">
 
+
+    <!--Select with searching & tagging-->
+    <link rel="stylesheet" href="{{asset('admin/vendor/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendor/select2/css/select2-bootstrap.min.css')}}">
+    <!--Date picker-->
+    <link rel="stylesheet" href="{{asset('admin/vendor/bootstrap_date-picker/css/bootstrap-datepicker3.min.css')}}">
+
+    <!-- include summernote css -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+
     <link rel="stylesheet" href="{{asset('admin/vendor/data-table/media/css/dataTables.bootstrap.min.css')}}">
 
     <!--TEMPLATE css-->
@@ -194,8 +205,16 @@
 {{--toggle status--}}
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
+<!--Select with searching & tagging-->
+<script src="{{asset('admin/vendor/select2/js/select2.min.js')}}"></script>
+<!--Date picker-->
+<script src="{{asset('admin/vendor/bootstrap_date-picker/js/bootstrap-datepicker.min.js')}}"></script>
 <!--Examples-->
 <script src="{{asset('admin/javascripts/examples/dashboard.js')}}"></script>
+
+<!-- include summernote js -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 </body>
 
 </html>
