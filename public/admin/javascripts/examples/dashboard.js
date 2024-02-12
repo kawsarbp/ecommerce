@@ -187,7 +187,7 @@ $('.subcategory-on-change').on('change', "#subcategory-status", function () {
 // slider category change status
 
 
-$('.slider-on-change').on('change', "#slider-status", function () {
+$('.product-on-change').on('change', "#product-status", function () {
     var id = $(this).data("id");
     if (this.checked) {
         var myStatus = 'active';

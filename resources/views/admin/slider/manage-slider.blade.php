@@ -37,14 +37,26 @@
                                     <td>{{ substr($slider->sub_title,0,15) }}...</td>
                                     <td>{{ date('d M,Y',strtotime($slider->start_date)) .' - '. date('d M,Y',strtotime($slider->end_date)) }}</td>
                                     <td>
-                                        <a href="{{ $slider->url }}" target="_blank" class="btn btn-primary btn-sm">Click Here</a>
-                                    </td>
-                                    <td><img src="{{ asset('uploads/slider/'.$slider->photo) }}" style="width: 50px;" alt=""></td>
-                                    <td>
-                                        <input type="checkbox" id="slider-status" data-id="{{$slider->id}}" {{ $slider->status === 'active' ?'checked':'' }} data-toggle="toggle" data-on="Active" data-off="Inactive" data-size="mini">
+                                        <a href="{{ $slider->url }}" target="_blank" class="btn btn-primary btn-sm">Click
+                                            Here</a>
                                     </td>
                                     <td>
-                                        <a href="{{route('slider.edit',base64_encode($slider->id))}}"
+                                        <?php
+                                        $images = json_decode($slider->photo);
+                                        if (is_array($images) || is_object($images)) {
+                                        foreach ($images as $file) {
+                                            ?>
+                                        <img src="{{ asset('uploads/slider/'.$file) }}" style="width: 50px;" alt="">
+                                        <?php }
+                                        } ?>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="slider-status" data-id="{{$slider->id}}"
+                                               {{ $slider->status === 'active' ?'checked':'' }} data-toggle="toggle"
+                                               data-on="Active" data-off="Inactive" data-size="mini">
+                                    </td>
+                                    <td>
+                                        <a href="# {{--{{route('slider.edit',base64_encode($slider->id))}}--}}"
                                            class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                         <a href="{{route('slider.delete',base64_encode($slider->id))}}"
                                            class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>

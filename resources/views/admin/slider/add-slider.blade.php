@@ -60,7 +60,7 @@
                                 <div class="form-group">
                                     <label for="photo" class="col-sm-2 control-label">Photo</label>
                                     <div class="col-sm-10">
-                                        <input type="file"  name="photo" class="form-control" id="photo" value="{{ old('photo') }}">
+                                        <input type="file"  name="photo[]" multiple class="form-control" id="photo" value="{{ old('photo') }}">
                                         @error('photo') <div class="text-danger">{{ $message }}</div> @enderror
                                     </div>
                                 </div>

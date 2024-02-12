@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\backend\BrandController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\frontend\SiteController;
@@ -60,6 +61,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/update/{id}', [SliderController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [SliderController::class, 'delete'])->name('delete');
         Route::get('/update-status/{id}/{status}', [SliderController::class, 'updateStatus'])->name('updateStatus');
+    });
+    /*product route*/
+    Route::prefix('/product')->name('product.')->group(function () {
+        Route::get('/create', [ProductController::class, 'addProduct'])->name('addProduct');
+        Route::get('/manage', [ProductController::class, 'manageProduct'])->name('manageProduct');
+        Route::post('/store', [ProductController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [ProductController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('delete');
+        Route::get('/update-status/{id}/{status}', [ProductController::class, 'updateStatus'])->name('updateStatus');
     });
 
 });

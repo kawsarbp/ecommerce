@@ -19,8 +19,8 @@ class SliderController extends Controller
     /*manage slider*/
     public function manageSlider()
     {
-        $sliders = Slider::where('start_date','<=',date('Y-m-d'))
-            ->where('end_date','>=',date('Y-m-d'))
+        $sliders = Slider::where('start_date', '<=', date('Y-m-d'))
+            ->where('end_date', '>=', date('Y-m-d'))
             ->select('id', 'user_id', 'title', 'sub_title', 'photo', 'url', 'start_date', 'end_date', 'status')
             ->orderBy('id', 'desc')
             ->get();
@@ -34,10 +34,13 @@ class SliderController extends Controller
         $id = base64_decode($id);
         $slider = Slider::find($id);
         $slider->delete();
-        $image_path = public_path("uploads/slider/{$slider->photo}");
-        if (File::exists($image_path)) {
-            //File::delete($image_path);
-            unlink($image_path);
+        $images = json_decode($slider->photo);
+        foreach ($images as $file) {
+            $image_path = public_path("uploads/slider/{$file}");
+            if (File::exists($image_path)) {
+                //File::delete($image_path);
+                unlink($image_path);
+            }
         }
         message('success', 'Slider has been successfully deleted!');
         return redirect()->back();
@@ -64,17 +67,31 @@ class SliderController extends Controller
             'url' => 'required|url',
             'start_date' => 'date',
             'end_date' => 'date',
-            'photo' => 'required|image'
+            'photo' => 'required'
         ]);
 
+        $photos = [];
+        if ($request->hasFile('photo')) {
+            foreach ($request->file('photo') as $file) {
+                $file_ex = $file->getClientOriginalExtension();
+                $file_name = uniqid() . date('dmyhis.') . $file_ex;
+                Image::make($file)->resize(500, 250)->save(public_path('uploads/slider/') . $file_name);
+                $photos[] = $file_name;
+            }
+        }
+
+        /*
+         * single image upload
         $file = $request->file('photo');
         $file_ex = $file->getClientOriginalExtension();
         $file_name = uniqid() . date('dmyhis.') . $file_ex;
+        */
+
         Slider::create([
             'user_id' => auth()->id(),
             'title' => $request->title,
             'sub_title' => $request->sub_title,
-            'photo' => $file_name,
+            'photo' => json_encode($photos),
             'url' => $request->url,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
@@ -82,7 +99,7 @@ class SliderController extends Controller
         ]);
         /*image upload with image intervention*/
         // $file->move(public_path('uploads/slider/'),$file_name);
-        Image::make($file)->resize(500,250)->save(public_path('uploads/slider/').$file_name);
+        //Image::make($file)->resize(500,250)->save(public_path('uploads/slider/').$file_name);
         message('success', 'Slider has been successfully created!');
         return redirect()->route('slider.manageSlider');
     }

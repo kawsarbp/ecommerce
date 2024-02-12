@@ -37,8 +37,8 @@
         <!-- LEFTSIDE header -->
         <div class="leftside-header">
             <div class="logo">
-                <a href="{{ route('dashboard') }}" class="on-click">
-                    <h3 class="">Faz Group</h3>
+                <a href="{{ route('index') }}" target="_blank" class="on-click">
+                    <h3 class="">Online Shop</h3>
                 </a>
             </div>
             <div id="menu-toggle" class="visible-xs toggle-left-sidebar" data-toggle-class="left-sidebar-open"
@@ -138,6 +138,14 @@
                                 <ul class="nav child-nav level-1">
                                     <li class="{{ request()->routeIs('slider.addSlider') ? 'open-item':'' }}"><a href="{{ route('slider.addSlider') }}">Add Slider</a></li>
                                     <li class="{{ request()->routeIs('slider.manageSlider') ? 'open-item':'' }}"><a href="{{ route('slider.manageSlider') }}">Manage Slider</a></li>
+                                </ul>
+                            </li>
+                            <!--Product-->
+                            <li class="has-child-item close-item {{ request()->routeIs('product.addProduct','product.manageProduct') ? 'open-item active-item':'' }} ">
+                                <a><i class="fa fa-list" aria-hidden="true"></i><span>Product</span> </a>
+                                <ul class="nav child-nav level-1">
+                                    <li class="{{ request()->routeIs('product.addProduct') ? 'open-item':'' }}"><a href="{{ route('product.addProduct') }}">Create Product</a></li>
+                                    <li class="{{ request()->routeIs('product.manageProduct') ? 'open-item':'' }}"><a href="{{ route('product.manageProduct') }}">Manage Product</a></li>
                                 </ul>
                             </li>
 
