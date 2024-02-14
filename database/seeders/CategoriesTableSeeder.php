@@ -21,7 +21,7 @@ class CategoriesTableSeeder extends Seeder
                 'user_id' => 1,
                 'name' => $name,
                 'slug' => str_replace(' ', '-', $name),
-                'status' => array_rand(['active' => 'active', 'inactive' => 'inactive']),
+                'status' => 'active',
             ]);
         }
     }

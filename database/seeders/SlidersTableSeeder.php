@@ -15,16 +15,16 @@ class SlidersTableSeeder extends Seeder
     public function run(): void
     {
         $faker = Factory::create();
-        foreach (range(1, 5) as $index) {
+        foreach (range(1, 10) as $index) {
             Slider::create([
                 'user_id' => 1,
-                'title' => $faker->unique()->title,
+                'title' => $faker->unique()->name,
                 'sub_title' => $faker->unique()->paragraph,
                 'photo' => $faker->imageUrl,
                 'url' => $faker->url,
-                'start_date' => $faker->date,
-                'end_date' => $faker->date,
-                'status' => array_rand(['active' => 'active', 'inactive' => 'inactive']),
+                'start_date' => date('Y-m-d'),
+                'end_date' => date('Y-m-d',strtotime('+1 month')),
+                'status' => 'active',
             ]);
         }
     }

@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [SiteController::class, 'index'])->name('index');
+Route::get('/subcategory/{slug}', [SiteController::class, 'category'])->name('category');
+Route::get('/single-product/{slug}', [SiteController::class, 'product'])->name('product');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {

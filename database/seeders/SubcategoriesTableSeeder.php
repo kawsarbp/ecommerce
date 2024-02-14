@@ -23,7 +23,7 @@ class SubcategoriesTableSeeder extends Seeder
                 'category_id'=> rand(1,10),
                 'name' => $name,
                 'slug' => str_replace(' ', '-', $name),
-                'status' => array_rand(['active' => 'active', 'inactive' => 'inactive']),
+                'status' => 'active' ,
             ]);
         }
     }

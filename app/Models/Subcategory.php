@@ -12,6 +12,6 @@ class Subcategory extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id')->select('id','user_id','name','slug','status');
+        return $this->belongsTo(Category::class)->select('id','user_id','name','slug','status');
     }
 }

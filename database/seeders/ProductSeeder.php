@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $faker = Factory::create();
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 200) as $index) {
             $name = $faker->unique()->sentence;
             Product::create([
                 'user_id' => 1,
@@ -28,8 +28,8 @@ class ProductSeeder extends Seeder
                 'buying_price' => rand(700,900),
                 'selling_price' => rand(1000,1200),
                 'special_price' => rand(500,600),
-                'special_start' => $faker->date,
-                'special_end' => $faker->date,
+                'special_start' => date('Y-m-d'),
+                'special_end' => date('Y-m-d',strtotime('+1 month')),
                 'quantity' => rand(10,30),
                 'video_url' => '',
                 'warranty' => 0,
@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
                 'gallery' => $faker->imageUrl,
                 'description' => $faker->sentence,
                 'long_description' => $faker->text,
-                'status' => array_rand(['active' => 'active', 'inactive' => 'inactive']),
+                'status' => 'active',
             ]);
         }
     }

@@ -28,7 +28,7 @@ class BrandsTableSeeder extends Seeder
                 'user_id' => 1,
                 'brand_name' => $faker->unique()->name,
                 'brand_slug' => str_replace(' ', '-', $faker->unique()->name),
-                'status' => array_rand(['active' => 'active', 'inactive' => 'inactive']),
+                'status' => array_rand(['active'=>'active','inactive'=>'inactive']),
             ]);
         }
     }
