@@ -7,6 +7,7 @@ use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\frontend\SiteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoadMore;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'index'])->name('index');
 Route::get('/subcategory/{slug}', [SiteController::class, 'category'])->name('category');
+Route::get('/single-product/{slug}', [SiteController::class, 'product'])->name('product');
+#load more for test
+Route::get('/load-more',[LoadMore::class,'index']);
+Route::post('/load-more',[LoadMore::class,'loadMore'])->name('loadMore');
+#load more for test
+
 Route::get('/single-product/{slug}', [SiteController::class, 'product'])->name('product');
 Auth::routes();
 

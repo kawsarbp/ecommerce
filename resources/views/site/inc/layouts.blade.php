@@ -206,6 +206,9 @@
                                     <a href="javascript:void(0)">{{$brand->brand_name}}</a>
                                 </li>
                                 @endforeach
+                                <li class="active dropdown yamm-fw">
+                                    <a href="{{ route('loadMore') }}">Load More</a>
+                                </li>
                             </ul>
                             <!-- /.navbar-nav -->
                             <div class="clearfix"></div>
