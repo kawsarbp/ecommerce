@@ -20,7 +20,6 @@
 <script>
     var token = $('input[name="_token"]').val();
     load_more('', token)
-
     function load_more(id = "", token) {
         $.ajax({
             url: '{{route('loadMore')}}',

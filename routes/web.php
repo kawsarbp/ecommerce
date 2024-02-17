@@ -15,15 +15,16 @@ use Illuminate\Support\Facades\Route;
 /*
 | Web Routes
 */
-
-Route::get('/', [SiteController::class, 'index'])->name('index');
-Route::get('/subcategory/{slug}', [SiteController::class, 'category'])->name('category');
-Route::get('/single-product/{slug}', [SiteController::class, 'product'])->name('product');
 #load more for test
 Route::get('/load-more',[LoadMore::class,'index']);
 Route::post('/load-more',[LoadMore::class,'loadMore'])->name('loadMore');
 #load more for test
+Route::get('/', [SiteController::class, 'index'])->name('index');
+Route::get('/subcategory/{slug}', [SiteController::class, 'category'])->name('category');
+Route::post('/subcategory', [SiteController::class, 'loadMore'])->name('loadMore');
 
+
+Route::get('/single-product/{slug}', [SiteController::class, 'product'])->name('product');
 Route::get('/single-product/{slug}', [SiteController::class, 'product'])->name('product');
 Auth::routes();
 

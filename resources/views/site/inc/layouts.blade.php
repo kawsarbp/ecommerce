@@ -31,6 +31,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800'
           rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
+    <script src="{{asset('site/assets/js/jquery-1.11.1.min.js')}}"></script>
 </head>
 <body class="cnt-home">
 <!-- ============================================== HEADER ============================================== -->
@@ -366,7 +369,6 @@
 <!-- For demo purposes – can be removed on production : End -->
 
 <!-- JavaScripts placed at the end of the document so the pages load faster -->
-<script src="{{asset('site/assets/js/jquery-1.11.1.min.js')}}"></script>
 <script src="{{asset('site/assets/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('site/assets/js/bootstrap-hover-dropdown.min.js')}}"></script>
 <script src="{{asset('site/assets/js/owl.carousel.min.js')}}"></script>
