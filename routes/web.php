@@ -81,6 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/update/{id}', [ProductController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('delete');
         Route::get('/update-status/{id}/{status}', [ProductController::class, 'updateStatus'])->name('updateStatus');
+        Route::get('/price-update/{id}/{price}',[ProductController::class,'priceUpdate'])->name('priceUpdate');
     });
 
 });

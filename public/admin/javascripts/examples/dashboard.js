@@ -212,3 +212,20 @@ $('.product-on-change').on('change', "#product-status", function () {
         }
     });
 });
+
+// dashboard price update with ajax
+$('.price-input').blur(function () {
+    var id = $(this).data('product-id');
+    var price = $(this).val();
+
+    $('.cm-loader').show();
+    $.ajax({
+        url: "price-update/"  + id + '/' + price,
+        method: 'get',
+        success: function (result) {
+            $('.cm-loader').hide();
+            console.log(result)
+        }
+    });
+
+})

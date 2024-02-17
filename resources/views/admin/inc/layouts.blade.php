@@ -38,6 +38,7 @@
     {{--toggle status--}}
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
+    <script src="{{asset('admin/vendor/jquery/jquery-1.12.3.min.js')}}"></script>
 </head>
 
 <body>
@@ -181,7 +182,6 @@
 </div>
 <!--BASIC scripts-->
 <!-- ========================================================= -->
-<script src="{{asset('admin/vendor/jquery/jquery-1.12.3.min.js')}}"></script>
 <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('admin/vendor/nano-scroller/nano-scroller.js')}}"></script>
 <!--TEMPLATE scripts-->

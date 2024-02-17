@@ -35,16 +35,21 @@
                             </thead>
                             <tbody>
                             @foreach($products as $product)
+
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ substr($product->name,0,15) }}...</td>
                                     <td>{{ $product->model }}</td>
-                                    <td><input type="text" class="form-control" value="{{ $product->buying_price }}"></td>
+                                    <td>
+                                        {{--                                        <input data-product-price="{{ $product->buying_price }}" name="update_price" type="text" class="form-control buying_price" value="{{ $product->buying_price }}">--}}
+                                        <input type="number" class="price-input"  value="{{ $product->buying_price }}"
+                                               data-product-id="{{ $product->id }}">
+                                    </td>
                                     <td>{{ $product->selling_price }}</td>
                                     <td>{{ $product->special_price }}</td>
                                     <td>{{ date('d, M-Y',strtotime($product->special_start)) .' - '.  date('d, M-Y',strtotime($product->special_end))   }}</td>
                                     <td>{{ $product->quantity }}</td>
-                                    <td><img style="width: 50px;" src="{{asset('uploads/thumbnail').'/'.$product->thumbnail}}" alt=""></td>
+                                    <td><img style="width: 50px;" src="{{$product->thumbnail}}" alt=""></td>
                                     <td>
 
                                             <?php

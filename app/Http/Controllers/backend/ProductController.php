@@ -131,4 +131,12 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    /*price change witha ajax*/
+    public function priceUpdate($id, $price)
+    {
+        $product = Product::find($id);
+        $product->buying_price = $price;
+        $product->save();
+    }
+
 }
