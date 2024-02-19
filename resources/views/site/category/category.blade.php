@@ -10,8 +10,8 @@
                         <div id="myTabContent" class="tab-content category-list">
                             <div class="tab-pane active " id="grid-container">
                                 <div class="category-product">
-                                    <input type="text" value="{{$subSlug}}" name="slug">
                                     @csrf
+                                    <input type="hidden" value="{{$subSlug}}" name="slug">
                                     <div class="row" id="get-items">
 
                                     </div>
@@ -46,7 +46,7 @@
 
     $('body').on("click","#loadMoreBtn",function (){
         var id = $(this).data('id');
-        $("#loadMoreBtn").html('Loading');
+        $("#loadMoreBtn").html('Loading...');
         load_more(id,token);
     });
 

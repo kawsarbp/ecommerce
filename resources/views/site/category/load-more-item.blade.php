@@ -78,7 +78,7 @@
         </div>
     @endif
 @else
-    <h2>Data not found</h2>
+    <h2 class="text-center text-danger">Data not found</h2>
 @endif
 
 
